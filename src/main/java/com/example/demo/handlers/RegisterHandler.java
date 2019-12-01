@@ -71,6 +71,19 @@ public class RegisterHandler {
             transitionValue = "failure";
         }
 
+        if (billingInfo.getZipcode().length() == 6 && billingInfo.getZipcode().matches("\\d\\d-\\d\\d\\d")) {
+            transitionValue = "success";
+        } else {
+            error.addMessage(new MessageBuilder().
+                    error()
+                    .source("zipcode")
+                    .defaultText("Invalid zipcode!")
+                    .build());
+
+            transitionValue = "failure";
+        }
+
+        // TODO: 01.12.2019 Zip code validation
         return transitionValue;
     }
 }

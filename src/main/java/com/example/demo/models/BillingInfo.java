@@ -20,4 +20,12 @@ public class BillingInfo implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 }
