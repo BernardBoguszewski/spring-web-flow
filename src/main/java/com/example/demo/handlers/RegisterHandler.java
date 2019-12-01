@@ -57,4 +57,20 @@ public class RegisterHandler {
 
         return transitionValue;
     }
+
+    public String validateBilling(BillingInfo billingInfo, MessageContext error) {
+        String transitionValue = "success";
+
+        if (billingInfo.getAddress().equalsIgnoreCase("xyz")) {
+            error.addMessage(new MessageBuilder().
+                    error()
+                    .source("address")
+                    .defaultText("Invalid address!")
+                    .build());
+
+            transitionValue = "failure";
+        }
+
+        return transitionValue;
+    }
 }

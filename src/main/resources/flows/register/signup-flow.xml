@@ -27,13 +27,20 @@
 
     <view-state id="billing" view="flows/register/signup-billing" model="billingInfo">
         <transition on="personal" to="personal"/>
-        <transition on="confirm" to="confirm"/>
+        <transition on="confirm" to="validateBilling"/>
         <on-exit>
             <evaluate expression="registerHandler.addBillingInfo(flowScope.registerModel, billingInfo)"/>
         </on-exit>
     </view-state>
 
+    <action-state id="validateBilling">
+        <evaluate expression="registerHandler.validateBilling(billingInfo, messageContext)"/>
+        <transition on="success" to="confirm"/>
+        <transition on="failure" to="billing"/>
+    </action-state>
+
     <view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
+
         <transition on="personal" to="personal"/>
         <transition on="billing" to="billing"/>
         <transition on="submit" to="submit"/>

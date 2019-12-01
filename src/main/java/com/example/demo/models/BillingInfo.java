@@ -10,6 +10,9 @@ public class BillingInfo implements Serializable {
     @NotBlank
     private String address;
 
+    @NotBlank
+    private String zipcode;
+
     public String getAddress() {
         return address;
     }
